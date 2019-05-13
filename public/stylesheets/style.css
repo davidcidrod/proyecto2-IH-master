@@ -1,0 +1,608 @@
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+li{
+  list-style: none;
+}
+
+section{
+  padding: 20px;
+  height: 100vh;
+}
+
+.category-selection, 
+.form-section, 
+.teacher-list-section{
+  margin-top: 70px; 
+}
+
+/* Corregir, fix momentaneo */
+.height-100{
+  height: 100% !important;
+}
+
+/* ---- Buttons ---- */
+
+.btn{
+  padding: 20px 0;
+  font-size: 1.2em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px;
+  color: #ffffff;
+}
+
+.btn-outline{
+  margin: 0 0 30px 0;
+  border: 1px solid #ffffff;
+
+}
+
+.btn-primary{
+  width: 100%;
+  border: 0;
+  box-shadow: 1px 4px 17px 1px rgba(0, 0, 0, 0.24);
+  background: #4295ff; /* Old browsers */
+  background: -moz-linear-gradient(left, #4295ff 0%, #49dfd7 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #4295ff 0%,#49dfd7 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #4295ff 0%,#49dfd7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4295ff', endColorstr='#49dfd7',GradientType=1 ); /* IE6-9 */
+}
+
+.btn-delete{
+  width: 100%;
+  margin: 40px 0 0 0;
+  padding: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #F993AC;
+  border: 0;
+  background: transparent;
+}
+
+.logout-button{
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  color: #4A4A4A;
+  border: 0;
+  background: transparent;
+}
+
+/* --- Menu toggle --- */
+
+#menuToggle{
+  display: block;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  position: relative;
+  left: 20px;
+}
+
+#menuToggle input{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #656565;
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2){
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #4299fd;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu{
+  top: 79px;
+  left: 25px;
+  position: absolute;
+  width: 300px;
+  height: 100vh;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #ffffff;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  box-shadow: 0 0px 10px 2px #33333369;
+}
+
+#menu a{
+  text-decoration: none;
+}
+
+#menu li{
+  padding: 20px 0;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4A4A4A;
+}
+
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul{
+  transform: none;
+}
+
+/* --- Header --- */
+
+.main-header, .profile-header{
+  height: 70px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  background: #f7f7f9;
+  width: 100%;
+  border-bottom: 1px solid #eaebec;
+}
+
+.profile-header{
+  height: 70px;
+  display: flex;
+  align-items: start;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  background: #f7f7f9;
+  width: 100%;
+  border-bottom: 1px solid #eaebec;
+}
+
+.profile-header .nav {
+  width: 100%;
+  display: flex;
+  height: 70px;
+  align-items: center;
+}
+
+.profile-header .cog-edit{
+  position: relative;
+  right: 15px;
+  font-size: 1.4em;
+  color: #656565;
+}
+
+
+.main-header nav{
+  position: absolute;
+}
+
+.main-header h1, .profile-header h1{
+  font-size: 1.3em;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+/* ---- hero ---- */
+.hero{
+  display: grid;
+  align-items: center;
+  background: url(../images/hero-img.png) no-repeat;
+  background-size: cover;
+}
+
+.hero-content{
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-content h1{
+  font-size: 4em;
+  color: #FFF;
+  text-align: center;
+  margin: 0 0 100px 0;
+}
+
+.hero-content .create-account{
+  font-size: 1em;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.hero-content .create-account a{
+  color: #FFFFFF;
+}
+
+/* ---- Sign in / Signup ---- */
+
+.form-section{
+  height: 90vh;
+}
+
+.user-form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user-form .field{
+  margin: 0 0 20px 0;
+}
+
+.user-form .field.last:nth-last-child(n){
+  margin: 0 0 40px 0;
+}
+
+.user-form .inputs.login{
+  margin-top: 60%;
+}
+
+.user-form .inputs .field label{
+  margin: 0 0 5px 2px;
+  display: block;
+  font-size: 1.3em;
+  color: #989898;
+}
+
+.user-form .inputs .field input, .user-form .inputs .field select{
+  padding: 15px;
+  color: #9FA5AA;
+  border: 1px solid #cacaca;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1.2em;
+  background: #FFFFFF;
+}
+
+.user-form .inputs .field input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #C9D0D6;
+}
+
+.user-form .create-account{
+  color: #8B959E;
+  font-size: 1em;
+  text-align: center;
+}
+
+.user-form .create-account a{
+  color: #4295ff;
+}
+
+/* ---- Category ---- */
+
+.category-selection ul {
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.category-selection ul li{
+  height: 150px;
+  width: 30%;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.53);
+  -moz-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.53);
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.18);
+}
+
+.category-selection ul li a{
+  text-decoration: none;
+}
+
+.category-selection ul li a img{
+  width: 60px;
+  margin: 25px auto 5px auto;
+}
+
+.category-selection ul li a p{
+  color: #4A4A4A;
+  font-size: 1em;
+}
+/* ---- Category list ---- */
+
+.teacher-list-section{
+  height: 100%;
+}
+
+.teacher-list-section ul li.lesson-card{
+  height: 220px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.53);
+  -moz-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.53);
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.18);
+}
+
+li.lesson-card a{
+  text-decoration: none;
+}
+
+li.lesson-card a .img-container{
+  position: relative;
+  height: 140px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+li.lesson-card .img-container img{
+  width: 100%;
+}
+
+li.lesson-card .img-container p{
+  position: absolute;
+  bottom: 0;
+  color: #FFFF;
+  font-size: 1.2em;
+  margin: 15px;
+}
+
+li.lesson-card .img-profile img{
+  width: 50px;
+  height: 50px;
+  margin: 0 10px 0 0;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 2px solid #85bbff;
+  object-fit: cover;
+  padding: 3px;
+}
+
+li.lesson-card .info-container{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+li.lesson-card .info-container p{
+  margin: 0;
+  color: #000000;
+  font-size: 1em;
+}
+
+/* ---- Section detail ---- */
+
+.section-detail{
+  margin-top: 70px;
+  padding: 0;
+  height: 100%;
+}
+
+.section-detail .detail-top-img{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+.detail-info{
+  position: relative;
+  top: -40px;
+  background: #FFF;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+}
+
+.detail-info .img-profile{
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.detail-info .info-teacher {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+}
+
+.detail-info .info-teacher p {
+  font-size: 1.2em;
+}
+
+.detail-info .map-detail{
+  width: 100%;
+  height: 200px;
+  margin: 30px 0 40px 0;
+}
+
+/* --- Profile section --- */
+
+.profile-section{
+  margin-top: 70px;
+  height: 100%;
+}
+
+.profile-section .user-info{
+  margin: 0 0 30px 0;
+  display: flex;
+  align-items: center;
+}
+
+.profile-section .user-info .img-profile{
+  width: 80px;
+  height: 80px;
+  margin: 0 10px 0 10px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 2px solid #85bbff;
+  object-fit: cover;
+  padding: 3px;
+}
+
+.profile-section .tabs{
+  margin: 10px 0 40px 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.profile-section .tabs button{
+  padding: 15px 0;
+  width: 45%;
+  border-radius: 50px;
+  border: 0;
+  font-size: 1em;
+  background: transparent;
+  border: 2px solid #85bbfd;
+  color: #85bbfd;
+}
+
+.profile-section .tabs button.active{
+  color: #fff;
+  background: #85bbfe;
+}
+
+.match-card{
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.53);
+  -moz-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.53);
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.18);
+}
+
+.match-card .info-teacher{
+  display: flex;
+  align-items: center;
+}
+
+.info-teacher .img-profile{
+  width: 55px;
+  height: 55px;
+  margin-right: 10px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 2px solid #85bbff;
+  object-fit: cover;
+  padding: 3px;
+}
+
+.info-teacher .teacher-name h3{
+  margin: 0 0 5px 0;
+}
+
+.info-teacher .teacher-name p{
+  margin: 0;
+}
+
+.match-card p{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #777d82;
+}
+
+.match-card .match-footer{
+  height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.match-footer form{
+  width: 40%;
+}
+
+.match-footer h4{
+  color: #85bbfd;
+}
+
+.btn-match{
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font-size: 1.1em;
+  line-height: 50px;
+}
+
+.btn-match.decline{
+  border-bottom: 4px solid #F993AC;
+}
+
+.btn-match.accept{
+  border-bottom: 4px solid #4FE9DB;
+}
+
+

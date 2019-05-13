@@ -1,0 +1,22 @@
+<section class="teacher-list-section">
+   <ul>
+      {{#each users}}
+         <li class="lesson-card">
+            <a href="/detail/{{id}}">
+               <div class="img-container">
+                  <p>{{header}}</p>
+                  <img src="{{imageUrl}}" alt="backgound-image">
+               </div>
+               <div class="info-container">
+                  <div class="img-profile">
+                     <img src="{{imageProfile}}" alt="">
+                  </div>
+                  <p>{{name}}</p>
+               </div>
+            </a>
+         </li>
+      {{/each}}
+   </ul>
+</section>
+
+<script src=''></script>

@@ -1,0 +1,30 @@
+
+<section class="section-detail">
+   <img class="detail-top-img" src="{{profesor.imageUrl}}" alt="image-background">
+   <div class="detail-info">
+      <h1>{{profesor.header}}</h1>
+      <div class="info-teacher">
+         <img class="img-profile" src="{{profesor.imageProfile}}" alt="profile-image">
+         <h3>{{profesor.name}}</h3>
+      </div>
+      <p>{{profesor.description}}</p>
+      <p>Mail: {{profesor.mail}}</p>
+
+
+      {{!-- //localización --}}
+       <p class="coordinates" hidden>{{profesor.location.coordinates}}</p> 
+      <div class="map-detail" id="map"></div>
+
+      <form id="form-teachme" action="/detail/{{profesor._id}}" method="post">
+         <button id="teach-me" class="btn btn-primary" type="submit">Teach Me</button>
+      </form>
+   </div>
+</section>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
+<script src="/javascripts/map.js"></script>
+
+
+

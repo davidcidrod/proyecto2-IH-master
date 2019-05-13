@@ -1,0 +1,56 @@
+<section class="profile-section">
+   <div class="user-info">
+      <img class="img-profile" src="{{currentUser.imageProfile}}" alt="">
+      <h3>{{currentUser.name}}</h3>
+   </div>
+
+   <div class="tabs"  onclick="activeTabs(event)">  
+      <button class="btn-tab active" onclick="misProfesores()">My teachers</button>
+      <button class="btn-tab" onclick="misEstudiantes()">My students</button>
+   </div>
+
+   <div id="profesores">
+      {{#each user}}
+         <div class="match-card">
+            <div class="info-teacher">
+               <img class="img-profile" src="{{this.teacher.imageProfile}}" alt="">
+               <div class="teacher-name">  
+                  <h3>{{this.teacher.name}}</h3>
+                  <p>Profesor de: {{this.teacher.category}}</p>
+               </div>
+            </div>
+            <p>{{this.teacher.description}}</p>
+             
+            <div class="match-footer">
+               <h4><i class="far fa-clock"></i> {{this.state}}</h4> 
+            </div>
+         </div>
+      {{/each}} 
+   </div>
+
+   <div id="estudiantes">
+      {{#each myStudents}}
+         <div class="match-card"> 
+            <div class="info-teacher">    
+               <img class="img-profile" src="{{this.student.imageProfile}}" alt="">  
+               <div class="teacher-name">  
+                  <h3>{{this.student.name}}</h3>
+                  <p>Estudiante de: {{this.student.category}}</p>
+               </div>
+            </div>
+            <p>{{this.student.description}}</p>
+            <div class="match-footer">
+               <form action="/profile/{{this.student._id}}/accept" method="POST">
+                  <button type="submit" class="btn-match accept"><i class="fas fa-check"></i> Accept</button>
+               </form>
+               <form action="/profile/{{this.student._id}}/decline" method="POST">
+                  <button type="submit" class="btn-match decline"><i class="fas fa-times"></i> Decline</button>
+               </form>
+            </div>
+         </div>
+      
+      {{/each}} 
+      </div>
+</section>
+
+<script src="/javascripts/matches.js"></script>

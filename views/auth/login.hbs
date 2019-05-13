@@ -1,0 +1,24 @@
+<header class="main-header">
+   <h1>Login</h1>
+</header>
+<section class="form-section">
+   <form class="user-form" action="/auth/login" method="POST">
+      <div class="inputs login">
+         <div class="field">
+            <label for="">Mail</label>
+            <input type="email" placeholder="Mail" name="mail">
+         </div>
+         <div class="field last">
+            <label for="">Password</label>
+            <input type="password" placeholder="Password" name="password">
+         </div>
+         <p class="create-account">Need a Sytudi account?  <a href="/auth/signup">Create an account</a></p>
+      </div>
+      {{> flash}}
+      
+      <button class="btn btn-primary" type="submit">Login</button>
+
+   </form>
+
+</section>
+<script src=""></script>
